@@ -15,6 +15,7 @@
 		AF1606ED2240911400289AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1606EB2240911400289AEA /* LaunchScreen.storyboard */; };
 		AF1606F52240A69000289AEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1606F42240A69000289AEA /* GoogleService-Info.plist */; };
 		AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606F62240B93500289AEA /* AddThoughtVC.swift */; };
+		AF1606FD2240DF6400289AEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606FC2240DF6400289AEA /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AF1606EE2240911400289AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1606F42240A69000289AEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF1606F62240B93500289AEA /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
+		AF1606FC2240DF6400289AEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		AF1606E12240911300289AEA /* FirestorePractice */ = {
 			isa = PBXGroup;
 			children = (
+				AF1606FB2240DF1D00289AEA /* Uitillities */,
 				AF1606FA2240B96300289AEA /* Model */,
 				AF1606F92240B95700289AEA /* View */,
 				AF1606F82240B94200289AEA /* Controller */,
@@ -116,6 +119,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AF1606FB2240DF1D00289AEA /* Uitillities */ = {
+			isa = PBXGroup;
+			children = (
+				AF1606FC2240DF6400289AEA /* Constants.swift */,
+			);
+			path = Uitillities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +265,7 @@
 				AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */,
 				AF1606E52240911300289AEA /* MainVC.swift in Sources */,
 				AF1606E32240911300289AEA /* AppDelegate.swift in Sources */,
+				AF1606FD2240DF6400289AEA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

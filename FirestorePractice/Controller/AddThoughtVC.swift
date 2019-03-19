@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddThoughtVC: UIViewController, UITextViewDelegate {
 
@@ -15,6 +16,9 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var thoughtText: UITextView!
     @IBOutlet weak var postButton: UIButton!
+    
+    // Variables
+    private var selectedCategory = ThoughtCategory.funny.rawValue // rawValue까지 가야 "funny"가 나옴
     
     
     override func viewDidLoad() {
@@ -34,9 +38,33 @@ class AddThoughtVC: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func categoryChanged(_ sender: Any) {
+        switch categorySegment.selectedSegmentIndex {
+        case 0 :
+            selectedCategory = ThoughtCategory.funny.rawValue
+        case 1 :
+            selectedCategory = ThoughtCategory.serious.rawValue
+        default:
+            selectedCategory = ThoughtCategory.crazy.rawValue
+        }
     }
     
     @IBAction func postButtonTapped(_ sender: Any) {
+        guard let username = userNameText.text else { return }
+        Firestore.firestore().collection(THOUGHTS_REF).addDocument(data: [
+            CATEGORY : selectedCategory,
+            NUM_COMMENTS : 0,
+            NUM_LIKES : 0,
+            THOUGHT_TEXT : thoughtText.text,
+            TIMESTAMP : FieldValue.serverTimestamp(),
+            USERNAME : username
+        ]) { (error) in
+            if let error = error {
+                debugPrint("Error adding document: \(error)")
+            } else { // if it is successful
+                self.navigationController?.popViewController(animated: true) // 이전 ViewController로 돌아감
+            }
+        }
+        
     }
     
 
