@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		461C7E7528E7C9D628D9CB6A /* Pods_FirestorePractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EF7E8E960BB1D8AC211709 /* Pods_FirestorePractice.framework */; };
 		AF1606E32240911300289AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606E22240911300289AEA /* AppDelegate.swift */; };
-		AF1606E52240911300289AEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606E42240911300289AEA /* ViewController.swift */; };
+		AF1606E52240911300289AEA /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606E42240911300289AEA /* MainVC.swift */; };
 		AF1606E82240911300289AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1606E62240911300289AEA /* Main.storyboard */; };
 		AF1606EA2240911400289AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1606E92240911400289AEA /* Assets.xcassets */; };
 		AF1606ED2240911400289AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1606EB2240911400289AEA /* LaunchScreen.storyboard */; };
 		AF1606F52240A69000289AEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1606F42240A69000289AEA /* GoogleService-Info.plist */; };
+		AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606F62240B93500289AEA /* AddThoughtVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +23,13 @@
 		834BA7E1B1FB65AB93CFB87B /* Pods-FirestorePractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestorePractice.release.xcconfig"; path = "Target Support Files/Pods-FirestorePractice/Pods-FirestorePractice.release.xcconfig"; sourceTree = "<group>"; };
 		AF1606DF2240911300289AEA /* FirestorePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirestorePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1606E22240911300289AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF1606E42240911300289AEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF1606E42240911300289AEA /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		AF1606E72240911300289AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF1606E92240911400289AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF1606EC2240911400289AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF1606EE2240911400289AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1606F42240A69000289AEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF1606F62240B93500289AEA /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,10 @@
 		AF1606E12240911300289AEA /* FirestorePractice */ = {
 			isa = PBXGroup;
 			children = (
+				AF1606FA2240B96300289AEA /* Model */,
+				AF1606F92240B95700289AEA /* View */,
+				AF1606F82240B94200289AEA /* Controller */,
 				AF1606E22240911300289AEA /* AppDelegate.swift */,
-				AF1606E42240911300289AEA /* ViewController.swift */,
 				AF1606E62240911300289AEA /* Main.storyboard */,
 				AF1606E92240911400289AEA /* Assets.xcassets */,
 				AF1606EB2240911400289AEA /* LaunchScreen.storyboard */,
@@ -89,6 +93,29 @@
 				AF1606F42240A69000289AEA /* GoogleService-Info.plist */,
 			);
 			path = FirestorePractice;
+			sourceTree = "<group>";
+		};
+		AF1606F82240B94200289AEA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF1606E42240911300289AEA /* MainVC.swift */,
+				AF1606F62240B93500289AEA /* AddThoughtVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AF1606F92240B95700289AEA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF1606FA2240B96300289AEA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +251,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF1606E52240911300289AEA /* ViewController.swift in Sources */,
+				AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */,
+				AF1606E52240911300289AEA /* MainVC.swift in Sources */,
 				AF1606E32240911300289AEA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
