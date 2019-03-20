@@ -12,10 +12,10 @@ import Firebase
 class AddThoughtVC: UIViewController, UITextViewDelegate {
 
     // Outlets
-    @IBOutlet weak var categorySegment: UISegmentedControl!
-    @IBOutlet weak var userNameText: UITextField!
-    @IBOutlet weak var thoughtText: UITextView!
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet private weak var categorySegment: UISegmentedControl!
+    @IBOutlet private weak var userNameText: UITextField!
+    @IBOutlet private weak var thoughtText: UITextView!
+    @IBOutlet private weak var postButton: UIButton!
     
     // Variables
     private var selectedCategory = ThoughtCategory.funny.rawValue // rawValue까지 가야 "funny"가 나옴

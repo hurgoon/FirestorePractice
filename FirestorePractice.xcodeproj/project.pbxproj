@@ -16,6 +16,8 @@
 		AF1606F52240A69000289AEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1606F42240A69000289AEA /* GoogleService-Info.plist */; };
 		AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606F62240B93500289AEA /* AddThoughtVC.swift */; };
 		AF1606FD2240DF6400289AEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606FC2240DF6400289AEA /* Constants.swift */; };
+		AFA2AB2422429CA200D11439 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AB2322429CA200D11439 /* Thought.swift */; };
+		AFA2AB2622429F2B00D11439 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		AF1606F42240A69000289AEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF1606F62240B93500289AEA /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
 		AF1606FC2240DF6400289AEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AFA2AB2322429CA200D11439 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
+		AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 		AF1606F92240B95700289AEA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 		AF1606FA2240B96300289AEA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AFA2AB2322429CA200D11439 /* Thought.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,7 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */,
+				AFA2AB2422429CA200D11439 /* Thought.swift in Sources */,
 				AF1606E52240911300289AEA /* MainVC.swift in Sources */,
+				AFA2AB2622429F2B00D11439 /* ThoughtCell.swift in Sources */,
 				AF1606E32240911300289AEA /* AppDelegate.swift in Sources */,
 				AF1606FD2240DF6400289AEA /* Constants.swift in Sources */,
 			);
