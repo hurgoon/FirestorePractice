@@ -8,7 +8,7 @@
 
 import Foundation
 
-let THOUGHTS_REF = "thoughts"
+let THOUGHTS_REF = "thoughts" // Collection
 
 let CATEGORY = "category"
 let NUM_COMMENTS = "numComments"

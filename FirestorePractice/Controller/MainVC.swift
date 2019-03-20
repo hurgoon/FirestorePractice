@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum ThoughtCategory: String {
     case serious = "serious"
@@ -23,7 +24,30 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
     // Variables
     private var thoughts = [Thought]()
+    private var thoughtsCollectionRef: CollectionReference!
     
+    override func viewWillAppear(_ animated: Bool) {
+        thoughtsCollectionRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                debugPrint("Error fetching docs: \(error)")
+            } else {
+                guard let snap = snapshot else { return }
+                for document in snap.documents {
+                    let data = document.data()
+                    let username = data[USERNAME] as? String ?? "Anonymous"
+                    let timestamp = data[TIMESTAMP] as? Date ?? Date()
+                    let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
+                    let numLikes = data[NUM_LIKES] as? Int ?? 0
+                    let numComments = data[NUM_COMMENTS] as? Int ?? 0
+                    let documentId = document.documentID // "documentID"는 내장 인스턴스(내가 설정안함)
+                    
+                    let newThought = Thought(username: username, timestamp: timestamp, thoughtText: thoughtText, numLikes: numLikes, numComments: numComments, documentId: documentId)
+                    self.thoughts.append(newThought)
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +55,8 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension // 행당 높이 자동 설정
+        
+        thoughtsCollectionRef = Firestore.firestore().collection(THOUGHTS_REF)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
