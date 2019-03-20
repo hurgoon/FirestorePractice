@@ -44,32 +44,75 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate {
     }
     
     func setListener() {
-        thoughtsListener = thoughtsCollectionRef
-            .whereField(CATEGORY, isEqualTo: selectedCategory)
-            .order(by: TIMESTAMP, descending: true) // "true"는 최신이 위로
-            .addSnapshotListener { (snapshot, error) in // 실시간으로 데이터 바뀜
-            if let error = error {
-                debugPrint("Error fetching docs: \(error)")
-            } else {
-                self.thoughts.removeAll()
-                guard let snap = snapshot else { return }
-                for document in snap.documents {
-                    let data = document.data()
-                    let username = data[USERNAME] as? String ?? "Anonymous"
-                    let timestamp = data[TIMESTAMP] as! Timestamp
-                    let date: Date = timestamp.dateValue()
-                    let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
-                    let numLikes = data[NUM_LIKES] as? Int ?? 0
-                    let numComments = data[NUM_COMMENTS] as? Int ?? 0
-                    let documentId = document.documentID // "documentID"는 내장 인스턴스(내가 설정안함)
-                    
-                    let newThought = Thought(username: username, timestamp: date, thoughtText: thoughtText, numLikes: numLikes, numComments: numComments, documentId: documentId)
-                    self.thoughts.append(newThought)
-                }
-                self.tableView.reloadData()
+        if selectedCategory == ThoughtCategory.popular.rawValue {
+            thoughtsListener = thoughtsCollectionRef
+                .order(by: NUM_LIKES, descending: true) // "true"는 최신이 위로
+                .addSnapshotListener { (snapshot, error) in // 실시간으로 데이터 바뀜
+                    if let error = error {
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        self.thoughts.removeAll()
+                        
+                        self.thoughts = Thought.parseData(snapshot: snapshot) // 하기부분을 Thought로 보내고 치환시킴
+                        
+//                        guard let snap = snapshot else { return }
+//                        for document in snap.documents {
+//                            let data = document.data()
+//                            let username = data[USERNAME] as? String ?? "Anonymous"
+//                            let timestamp = data[TIMESTAMP] as! Timestamp
+//                            let date: Date = timestamp.dateValue()
+//                            let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
+//                            let numLikes = data[NUM_LIKES] as? Int ?? 0
+//                            let numComments = data[NUM_COMMENTS] as? Int ?? 0
+//                            let documentId = document.documentID // "documentID"는 내장 인스턴스(내가 설정안함)
+//
+//                            let newThought = Thought(username: username, timestamp: date, thoughtText: thoughtText, numLikes: numLikes, numComments: numComments, documentId: documentId)
+//                            self.thoughts.append(newThought)
+//                        }
+                        self.tableView.reloadData()
+                    }
+            }
+        } else {
+            thoughtsListener = thoughtsCollectionRef
+                .whereField(CATEGORY, isEqualTo: selectedCategory)
+                .order(by: TIMESTAMP, descending: true) // "true"는 최신이 위로
+                .addSnapshotListener { (snapshot, error) in // 실시간으로 데이터 바뀜
+                    if let error = error {
+                        debugPrint("Error fetching docs: \(error)")
+                    } else {
+                        self.thoughts.removeAll()
+                        
+                        self.thoughts = Thought.parseData(snapshot: snapshot) // 치환
+                        
+                        self.tableView.reloadData()
+                    }
             }
         }
-        
+//        thoughtsListener = thoughtsCollectionRef
+//            .whereField(CATEGORY, isEqualTo: selectedCategory)
+//            .order(by: TIMESTAMP, descending: true) // "true"는 최신이 위로
+//            .addSnapshotListener { (snapshot, error) in // 실시간으로 데이터 바뀜
+//            if let error = error {
+//                debugPrint("Error fetching docs: \(error)")
+//            } else {
+//                self.thoughts.removeAll()
+//                guard let snap = snapshot else { return }
+//                for document in snap.documents {
+//                    let data = document.data()
+//                    let username = data[USERNAME] as? String ?? "Anonymous"
+//                    let timestamp = data[TIMESTAMP] as! Timestamp
+//                    let date: Date = timestamp.dateValue()
+//                    let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
+//                    let numLikes = data[NUM_LIKES] as? Int ?? 0
+//                    let numComments = data[NUM_COMMENTS] as? Int ?? 0
+//                    let documentId = document.documentID // "documentID"는 내장 인스턴스(내가 설정안함)
+//
+//                    let newThought = Thought(username: username, timestamp: date, thoughtText: thoughtText, numLikes: numLikes, numComments: numComments, documentId: documentId)
+//                    self.thoughts.append(newThought)
+//                }
+//                self.tableView.reloadData()
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
