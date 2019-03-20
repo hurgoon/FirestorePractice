@@ -32,6 +32,7 @@
                                 <color key="tintColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.047058823530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="categoryChanged:" destination="bkq-Op-0OH" eventType="valueChanged" id="3iX-Nn-R1a"/>
+                                    <action selector="categoryChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lqj-6P-xef"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z6N-t6-ekv">
