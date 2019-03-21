@@ -8,5 +8,6 @@ target 'FirestorePractice' do
   # Pods for FirestorePractice
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
 
 end

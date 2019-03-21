@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		461C7E7528E7C9D628D9CB6A /* Pods_FirestorePractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EF7E8E960BB1D8AC211709 /* Pods_FirestorePractice.framework */; };
+		AF1089822243FB68002E76EE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1089812243FB68002E76EE /* LoginVC.swift */; };
+		AF1089842243FE9E002E76EE /* CreateUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1089832243FE9E002E76EE /* CreateUserVC.swift */; };
 		AF1606E32240911300289AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606E22240911300289AEA /* AppDelegate.swift */; };
 		AF1606E52240911300289AEA /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606E42240911300289AEA /* MainVC.swift */; };
 		AF1606E82240911300289AEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1606E62240911300289AEA /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 		46EF7E8E960BB1D8AC211709 /* Pods_FirestorePractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirestorePractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AE1ECB24BED1885E138C43A /* Pods-FirestorePractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestorePractice.debug.xcconfig"; path = "Target Support Files/Pods-FirestorePractice/Pods-FirestorePractice.debug.xcconfig"; sourceTree = "<group>"; };
 		834BA7E1B1FB65AB93CFB87B /* Pods-FirestorePractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestorePractice.release.xcconfig"; path = "Target Support Files/Pods-FirestorePractice/Pods-FirestorePractice.release.xcconfig"; sourceTree = "<group>"; };
+		AF1089812243FB68002E76EE /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		AF1089832243FE9E002E76EE /* CreateUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserVC.swift; sourceTree = "<group>"; };
 		AF1606DF2240911300289AEA /* FirestorePractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirestorePractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1606E22240911300289AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF1606E42240911300289AEA /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			children = (
 				AF1606E42240911300289AEA /* MainVC.swift */,
 				AF1606F62240B93500289AEA /* AddThoughtVC.swift */,
+				AF1089812243FB68002E76EE /* LoginVC.swift */,
+				AF1089832243FE9E002E76EE /* CreateUserVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FirestorePractice/Pods-FirestorePractice-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -227,6 +234,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -269,7 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */,
+				AF1089842243FE9E002E76EE /* CreateUserVC.swift in Sources */,
 				AFA2AB2422429CA200D11439 /* Thought.swift in Sources */,
+				AF1089822243FB68002E76EE /* LoginVC.swift in Sources */,
 				AF1606E52240911300289AEA /* MainVC.swift in Sources */,
 				AFA2AB2622429F2B00D11439 /* ThoughtCell.swift in Sources */,
 				AF1606E32240911300289AEA /* AppDelegate.swift in Sources */,
