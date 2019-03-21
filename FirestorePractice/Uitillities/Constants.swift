@@ -19,5 +19,5 @@ let THOUGHT_TEXT = "thoughtText"
 let TIMESTAMP = "timestamp"
 let USERNAME = "username"
 let DATE_CREATED = "dateCreated" // User 등록 시간
-let CURRENT_USER = Auth.auth().currentUser
+//let CURRENT_USER = Auth.auth().currentUser // 이건 쓰면 안됌...
 

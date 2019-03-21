@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class CreateUserVC: UIViewController {
-
+    
     // Outlets
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
@@ -20,7 +20,7 @@ class CreateUserVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         createBtn.layer.cornerRadius = 10
         cancelBtn.layer.cornerRadius = 10
     }
@@ -37,7 +37,7 @@ class CreateUserVC: UIViewController {
             }
             
             // 유저생성(등록?)
-            let changeRequest = CURRENT_USER?.createProfileChangeRequest()
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = username
             changeRequest?.commitChanges(completion: { (error) in
                 if let error = error {
@@ -45,15 +45,19 @@ class CreateUserVC: UIViewController {
                 }
             })
             
-            guard let userId = CURRENT_USER?.uid else { return }
+            guard let userId = Auth.auth().currentUser?.uid else { return }
             Firestore.firestore().collection(USERS_REF).document(userId).setData([ // setData: 없으면 만드는 것까지 함.
-                USERNAME : username,
-                DATE_CREATED : FieldValue.serverTimestamp()
+                    USERNAME : username,
+                    DATE_CREATED : FieldValue.serverTimestamp()
                 ], completion: { (error) in
                     if let error = error {
                         debugPrint(error.localizedDescription)
                     } else {
-                        self.dismiss(animated: true, completion: nil)
+//                        self.dismiss(animated: true, completion: nil) // 유저등록 되면 바로 로그인 되야함
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil) 
+                        let naviCon = storyboard.instantiateViewController(withIdentifier: "naviCon")
+                        self.present(naviCon, animated: true, completion: nil)
                     }
             })
         }

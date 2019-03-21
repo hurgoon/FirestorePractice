@@ -13,7 +13,7 @@
         <!--LoginVC-->
         <scene sceneID="CNn-TE-3pC">
             <objects>
-                <viewController id="Hkc-ce-pdn" customClass="LoginVC" customModule="FirestorePractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="Hkc-ce-pdn" customClass="LoginVC" customModule="FirestorePractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ygn-um-lBn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="createUserBtnTapped:" destination="Hkc-ce-pdn" eventType="touchUpInside" id="mTA-ht-yGU"/>
+                                    <segue destination="kTj-df-dcE" kind="show" id="rzu-i5-etK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IRW-7K-aaP">
@@ -312,6 +312,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Firestore Practice" id="Jzd-3P-sWG">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Ih4-Qv-luf">
+                            <connections>
+                                <action selector="logoutTapped:" destination="BYZ-38-t0r" id="nGR-3l-JoW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="addThoughtIcon" id="jS3-Rz-4CW">
                             <connections>
                                 <segue destination="bkq-Op-0OH" kind="show" id="FXc-K4-f5v"/>
@@ -412,7 +417,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2CS-LG-GQ0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pIx-oO-rVa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="naviCon" automaticallyAdjustsScrollViewInsets="NO" id="pIx-oO-rVa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mia-ne-iPK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
