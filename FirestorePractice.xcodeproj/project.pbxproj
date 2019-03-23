@@ -18,6 +18,8 @@
 		AF1606F52240A69000289AEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF1606F42240A69000289AEA /* GoogleService-Info.plist */; };
 		AF1606F72240B93500289AEA /* AddThoughtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606F62240B93500289AEA /* AddThoughtVC.swift */; };
 		AF1606FD2240DF6400289AEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1606FC2240DF6400289AEA /* Constants.swift */; };
+		AF7495FC2246F196006324D0 /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7495FB2246F196006324D0 /* CommentsVC.swift */; };
+		AF7495FE2246F7AF006324D0 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7495FD2246F7AF006324D0 /* CommentCell.swift */; };
 		AFA2AB2422429CA200D11439 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AB2322429CA200D11439 /* Thought.swift */; };
 		AFA2AB2622429F2B00D11439 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		AF1606F42240A69000289AEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF1606F62240B93500289AEA /* AddThoughtVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtVC.swift; sourceTree = "<group>"; };
 		AF1606FC2240DF6400289AEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AF7495FB2246F196006324D0 /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
+		AF7495FD2246F7AF006324D0 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		AFA2AB2322429CA200D11439 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +117,7 @@
 				AF1606F62240B93500289AEA /* AddThoughtVC.swift */,
 				AF1089812243FB68002E76EE /* LoginVC.swift */,
 				AF1089832243FE9E002E76EE /* CreateUserVC.swift */,
+				AF7495FB2246F196006324D0 /* CommentsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */,
+				AF7495FD2246F7AF006324D0 /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,9 +287,11 @@
 				AFA2AB2422429CA200D11439 /* Thought.swift in Sources */,
 				AF1089822243FB68002E76EE /* LoginVC.swift in Sources */,
 				AF1606E52240911300289AEA /* MainVC.swift in Sources */,
+				AF7495FE2246F7AF006324D0 /* CommentCell.swift in Sources */,
 				AFA2AB2622429F2B00D11439 /* ThoughtCell.swift in Sources */,
 				AF1606E32240911300289AEA /* AppDelegate.swift in Sources */,
 				AF1606FD2240DF6400289AEA /* Constants.swift in Sources */,
+				AF7495FC2246F196006324D0 /* CommentsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

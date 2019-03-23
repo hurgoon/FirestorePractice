@@ -257,7 +257,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="WAW-uQ-cCD">
-                                                    <rect key="frame" x="15" y="66" width="46.5" height="24"/>
+                                                    <rect key="frame" x="15" y="66" width="99" height="24"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starIconFilled" translatesAutoresizingMaskIntoConstraints="NO" id="h0k-c6-bxA">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -270,6 +270,19 @@
                                                             <rect key="frame" x="30" y="0.0" width="16.5" height="24"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="W5X-j0-yX2">
+                                                            <rect key="frame" x="52.5" y="0.0" width="24" height="24"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="f9W-tl-d1X"/>
+                                                                <constraint firstAttribute="height" constant="24" id="xA4-LR-hNE"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8D-fa-e9s">
+                                                            <rect key="frame" x="82.5" y="0.0" width="16.5" height="24"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -289,6 +302,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="commentsNumLbl" destination="P8D-fa-e9s" id="OPv-Wo-8iJ"/>
                                             <outlet property="likesImage" destination="h0k-c6-bxA" id="YZS-3s-8KB"/>
                                             <outlet property="likesNumLabel" destination="LTR-Ad-8MU" id="U6k-C2-BLJ"/>
                                             <outlet property="thoughtTextLabel" destination="r5d-Yy-CK3" id="Z0m-eF-ucw"/>
@@ -326,6 +340,7 @@
                     <connections>
                         <outlet property="segmentControl" destination="BQ1-UB-H9c" id="xYV-VO-qhe"/>
                         <outlet property="tableView" destination="Z6N-t6-ekv" id="nRc-Ov-c4R"/>
+                        <segue destination="6Wz-zf-oVG" kind="show" identifier="toComments" id="WNF-76-4rn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -412,7 +427,110 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVQ-Qf-ac1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780" y="134"/>
+            <point key="canvasLocation" x="2169" y="-217"/>
+        </scene>
+        <!--CommentsVC-->
+        <scene sceneID="x8Y-yr-6xK">
+            <objects>
+                <viewController id="6Wz-zf-oVG" customClass="CommentsVC" customModule="FirestorePractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qSS-Ff-Ucz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vsa-1f-AHA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="533"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="85" id="gCi-gN-bjq" customClass="CommentCell" customModule="FirestorePractice" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gCi-gN-bjq" id="OYp-EW-PRh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mar 21, 0:01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b8-x4-MVY">
+                                                    <rect key="frame" x="81.5" y="22.5" width="69" height="17"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is my random thought..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHG-GA-EG1">
+                                                    <rect key="frame" x="15" y="53" width="345" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JonnyB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEw-2I-69T">
+                                                    <rect key="frame" x="15" y="19" width="58.5" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PHG-GA-EG1" firstAttribute="trailing" secondItem="OYp-EW-PRh" secondAttribute="trailingMargin" id="3Cm-DY-O0F"/>
+                                                <constraint firstItem="9b8-x4-MVY" firstAttribute="leading" secondItem="NEw-2I-69T" secondAttribute="trailing" constant="8" id="Cy6-HF-1mL"/>
+                                                <constraint firstItem="9b8-x4-MVY" firstAttribute="centerY" secondItem="NEw-2I-69T" secondAttribute="centerY" id="FQy-AY-XP4"/>
+                                                <constraint firstItem="NEw-2I-69T" firstAttribute="top" secondItem="OYp-EW-PRh" secondAttribute="topMargin" constant="8" id="OpS-sG-Kvz"/>
+                                                <constraint firstItem="NEw-2I-69T" firstAttribute="leading" secondItem="OYp-EW-PRh" secondAttribute="leadingMargin" id="RWg-SR-cnF"/>
+                                                <constraint firstItem="PHG-GA-EG1" firstAttribute="leading" secondItem="OYp-EW-PRh" secondAttribute="leadingMargin" id="Wbg-8L-k2C"/>
+                                                <constraint firstItem="PHG-GA-EG1" firstAttribute="top" secondItem="NEw-2I-69T" secondAttribute="bottom" constant="10.5" id="e6e-eH-zpm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentTxt" destination="PHG-GA-EG1" id="ZZr-FI-GbS"/>
+                                            <outlet property="timestampTxt" destination="9b8-x4-MVY" id="pBq-UM-3lE"/>
+                                            <outlet property="usernameTxt" destination="NEw-2I-69T" id="eDV-CF-Ubl"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZT-HQ-reL">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add comments..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lrW-Xd-ZqU">
+                                        <rect key="frame" x="20" y="13" width="335" height="18"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoT-Xo-dTT">
+                                        <rect key="frame" x="341" y="11" width="22" height="22"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="addCommentTapped:" destination="6Wz-zf-oVG" eventType="touchUpInside" id="37Q-d5-zLV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lrW-Xd-ZqU" secondAttribute="trailing" constant="20" id="6GF-DI-v34"/>
+                                    <constraint firstAttribute="height" constant="44" id="OAg-tP-ML7"/>
+                                    <constraint firstItem="lrW-Xd-ZqU" firstAttribute="centerY" secondItem="BZT-HQ-reL" secondAttribute="centerY" id="VEr-AT-J49"/>
+                                    <constraint firstItem="lrW-Xd-ZqU" firstAttribute="leading" secondItem="BZT-HQ-reL" secondAttribute="leading" constant="20" id="pQT-qV-kLV"/>
+                                    <constraint firstItem="NoT-Xo-dTT" firstAttribute="centerY" secondItem="BZT-HQ-reL" secondAttribute="centerY" id="xPg-oV-WFp"/>
+                                    <constraint firstAttribute="trailing" secondItem="NoT-Xo-dTT" secondAttribute="trailing" constant="12" id="zZU-Tm-TUn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BZT-HQ-reL" firstAttribute="bottom" secondItem="TxN-Jl-oM7" secondAttribute="bottom" id="PgY-iy-RzH"/>
+                            <constraint firstItem="BZT-HQ-reL" firstAttribute="trailing" secondItem="TxN-Jl-oM7" secondAttribute="trailing" id="oNO-JC-SEH"/>
+                            <constraint firstItem="BZT-HQ-reL" firstAttribute="leading" secondItem="TxN-Jl-oM7" secondAttribute="leading" id="xu4-Kc-1Zr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TxN-Jl-oM7"/>
+                    </view>
+                    <connections>
+                        <outlet property="addCommentTxt" destination="lrW-Xd-ZqU" id="Lxf-x6-RtX"/>
+                        <outlet property="keyboardView" destination="BZT-HQ-reL" id="FRE-mS-ZkN"/>
+                        <outlet property="tabelView" destination="vsa-1f-AHA" id="nZE-ZP-Ng1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAr-Sz-JFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2168.8000000000002" y="509.59520239880067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2CS-LG-GQ0">
@@ -440,6 +558,7 @@
     </scenes>
     <resources>
         <image name="addThoughtIcon" width="21" height="24"/>
+        <image name="commentIcon" width="26" height="22"/>
         <image name="starIconFilled" width="20" height="19"/>
     </resources>
 </document>
