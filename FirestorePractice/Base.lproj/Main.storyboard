@@ -491,6 +491,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentTxt" destination="PHG-GA-EG1" id="clb-ms-RM4"/>
+                                            <outlet property="optionsMenu" destination="Wmx-QO-o5e" id="EcZ-dK-xfI"/>
                                             <outlet property="timestampTxt" destination="9b8-x4-MVY" id="MwS-0X-aHX"/>
                                             <outlet property="usernameTxt" destination="NEw-2I-69T" id="Ze5-AH-zLg"/>
                                         </connections>

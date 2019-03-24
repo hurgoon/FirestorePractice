@@ -9,8 +9,13 @@
 import UIKit
 import Firebase
 
-class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
+class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CommentDelegate {
+    
+    func commentOptionsTapped(comment: Comment) {
+        // Adding alert 부분
+        print("comment.username ", "=", comment.username)
+    }
+    
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addCommentTxt: UITextField!
@@ -108,7 +113,7 @@ class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentCell {
             
-            cell.configureCell(comment: comments[indexPath.row])
+            cell.configureCell(comment: comments[indexPath.row], delegate: self)
             return cell
         }
         return UITableViewCell()
