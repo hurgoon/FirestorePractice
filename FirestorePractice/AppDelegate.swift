@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // timestamp 콘피겨를 위한 DB셋팅
         FirebaseApp.configure()
         let db = Firestore.firestore()
         let settings = db.settings
