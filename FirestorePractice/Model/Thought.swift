@@ -35,8 +35,10 @@ class Thought {
         for document in snap.documents {
             let data = document.data()
             let username = data[USERNAME] as? String ?? "Anonymous"
-            let timestamp = data[TIMESTAMP] as! Timestamp
+            
+            let timestamp = data[TIMESTAMP] as! Timestamp // 타임스템프 가져오는 방법
             let date: Date = timestamp.dateValue()
+            
             let thoughtText = data[THOUGHT_TEXT] as? String ?? ""
             let numLikes = data[NUM_LIKES] as? Int ?? 0
             let numComments = data[NUM_COMMENTS] as? Int ?? 0

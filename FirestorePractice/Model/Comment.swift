@@ -21,9 +21,21 @@ class Comment {
         self.commentTxt = commentTxt
     }
     
-//    class func parseData(snapshot: QuerySnapshot) -> [Thought] {
-//        
-//        
-//    }
-    
+    class func parseData(snapshot: QuerySnapshot?) -> [Comment] {
+        var comments = [Comment]()
+        
+        guard let snap = snapshot else { return comments }
+        for document in snap.documents {
+            let data = document.data()
+            let username = data[USERNAME] as? String ?? "Anonymous"
+            let commentTxt = data[COMMENT_TXT] as? String ?? ""
+            
+            let timestamp = data[TIMESTAMP] as! Timestamp // 타입스탬프 파싱법
+            let date: Date = timestamp.dateValue()
+            
+            let newComment = Comment(username: username, timestamp: date, commentTxt: commentTxt)
+            comments.append(newComment)
+        }
+        return comments
+    }
 }

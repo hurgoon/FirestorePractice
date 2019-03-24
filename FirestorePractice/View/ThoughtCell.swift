@@ -51,5 +51,4 @@ class ThoughtCell: UITableViewCell {
         let timestamp = formatter.string(from: thought.timestamp)
         timestampLabel.text = timestamp
     }
-    
 }

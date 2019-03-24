@@ -17,7 +17,7 @@ class CommentCell: UITableViewCell {
 
     func configureCell(comment: Comment) {
         usernameTxt.text = comment.username
-        commentTxt.text = comment.commentTxt
+        commentTxt.text =  comment.commentTxt
         
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, hh:mm"

@@ -22,17 +22,45 @@ class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var thoughtRef: DocumentReference!
     let firestore = Firestore.firestore()
     var username: String!
+    var commentListener: ListenerRegistration!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        commentListener = firestore.collection(THOUGHTS_REF).document(self.thought.documentId)
+            .collection(COMMENTS_REF)
+            .order(by: TIMESTAMP, descending: false)
+            .addSnapshotListener({ (snapshot, error) in
+            
+            guard let snapshot = snapshot else {
+                debugPrint("Error Fetching comments: \(String(describing: error))")
+                return
+            }
+            
+            self.comments.removeAll()
+            self.comments = Comment.parseData(snapshot: snapshot)
+            self.tableView.reloadData()
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        commentListener.remove()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension // 행당 높이 자동 설정
+        
         thoughtRef = firestore.collection(THOUGHTS_REF).document(thought.documentId)
         
         if let name = Auth.auth().currentUser?.displayName {
             username = name
         }
+        
+        // 키보드 팝업 및 겹치는 뷰 위로 올리기
+        self.view.bindToKeyboard()
     }
     
     @IBAction func addCommentTapped(_ sender: Any) {
@@ -67,6 +95,7 @@ class CommentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 debugPrint("Transaction failed : \(error.localizedDescription)")
             } else {
                 self.addCommentTxt.text = ""
+                self.addCommentTxt.resignFirstResponder() // 텍스트 입력 및 등록 완료시 키보드 내려감
             }
         }
     }
