@@ -22,6 +22,7 @@
 		AF7495FE2246F7AF006324D0 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7495FD2246F7AF006324D0 /* CommentCell.swift */; };
 		AF749600224715A7006324D0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7495FF224715A7006324D0 /* Comment.swift */; };
 		AF74960222477D18006324D0 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF74960122477D18006324D0 /* KeyboardBoundView.swift */; };
+		AF74960422483EFD006324D0 /* UpdateCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF74960322483EFD006324D0 /* UpdateCommentVC.swift */; };
 		AFA2AB2422429CA200D11439 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AB2322429CA200D11439 /* Thought.swift */; };
 		AFA2AB2622429F2B00D11439 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		AF7495FD2246F7AF006324D0 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		AF7495FF224715A7006324D0 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		AF74960122477D18006324D0 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
+		AF74960322483EFD006324D0 /* UpdateCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommentVC.swift; sourceTree = "<group>"; };
 		AFA2AB2322429CA200D11439 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		AFA2AB2522429F2B00D11439 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 				AF1089812243FB68002E76EE /* LoginVC.swift */,
 				AF1089832243FE9E002E76EE /* CreateUserVC.swift */,
 				AF7495FB2246F196006324D0 /* CommentsVC.swift */,
+				AF74960322483EFD006324D0 /* UpdateCommentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				AF1089842243FE9E002E76EE /* CreateUserVC.swift in Sources */,
 				AF74960222477D18006324D0 /* KeyboardBoundView.swift in Sources */,
 				AFA2AB2422429CA200D11439 /* Thought.swift in Sources */,
+				AF74960422483EFD006324D0 /* UpdateCommentVC.swift in Sources */,
 				AF1089822243FB68002E76EE /* LoginVC.swift in Sources */,
 				AF1606E52240911300289AEA /* MainVC.swift in Sources */,
 				AF7495FE2246F7AF006324D0 /* CommentCell.swift in Sources */,
