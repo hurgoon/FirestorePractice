@@ -23,3 +23,4 @@ let DATE_CREATED = "dateCreated" // User 등록 시간
 //let CURRENT_USER = Auth.auth().currentUser // 이건 쓰면 안됌...
 let COMMENT_TXT = "commentTxt"
 
+let USER_ID = "userId"

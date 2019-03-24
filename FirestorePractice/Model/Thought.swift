@@ -17,8 +17,9 @@ class Thought {
     private(set) var numLikes: Int!
     private(set) var numComments: Int!
     private(set) var documentId: String!
+    private(set) var userId: String!
     
-    init(username: String, timestamp: Date, thoughtText: String, numLikes: Int, numComments: Int, documentId: String) {
+    init(username: String, timestamp: Date, thoughtText: String, numLikes: Int, numComments: Int, documentId: String, userId: String) {
         
         self.username = username
         self.timestamp = timestamp
@@ -26,6 +27,7 @@ class Thought {
         self.numLikes = numLikes
         self.numComments = numComments
         self.documentId = documentId
+        self.userId = userId
     }
     
     class func parseData(snapshot: QuerySnapshot?) -> [Thought] {
@@ -44,7 +46,9 @@ class Thought {
             let numComments = data[NUM_COMMENTS] as? Int ?? 0
             let documentId = document.documentID // "documentID"는 내장 인스턴스(내가 설정안함)
             
-            let newThought = Thought(username: username, timestamp: date, thoughtText: thoughtText, numLikes: numLikes, numComments: numComments, documentId: documentId)
+            let userId = document[USER_ID] as? String ?? ""
+            
+            let newThought = Thought(username: username, timestamp: date, thoughtText: thoughtText, numLikes: numLikes, numComments: numComments, documentId: documentId, userId: userId)
             thoughts.append(newThought)
         }
         
