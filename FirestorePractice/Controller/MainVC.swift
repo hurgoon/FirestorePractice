@@ -18,11 +18,6 @@ enum ThoughtCategory: String {
 
 class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate, ThoughtDelegate {
     
-    func thoughtOptionTapped(thought: Thought) {
-        // This is where we create the alert to handle the delegation.
-        print(" username ", "=", thought.username )
-    }
-    
     // Outlets
     @IBOutlet private weak var segmentControl: UISegmentedControl!
     @IBOutlet private weak var tableView: UITableView!
@@ -202,6 +197,61 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate, Thoug
         
         if handle != nil {
             Auth.auth().removeStateDidChangeListener(handle!)
+        }
+    }
+    
+    func thoughtOptionTapped(thought: Thought) {
+        // This is where we create the alert to handle the delegation.
+        let alert = UIAlertController(title: "Delete", message: "Do you want to delete your thought?", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete Thought", style: .default) { (action) in
+            // delete thought
+            // 서브 컬렉션 지우기
+            self.delete(collection: Firestore.firestore().collection(THOUGHTS_REF).document(thought.documentId)
+                .collection(COMMENTS_REF), completion: { (error) in
+                    if let error = error {
+                        debugPrint("Could not delete sub collectio: \(error.localizedDescription)")
+                    } else {
+                        // 상위 컬렉션(thought) 지우기
+                        Firestore.firestore().collection(THOUGHTS_REF).document(thought.documentId)
+                            .delete(completion: { (error) in
+                                if let error = error {
+                                    debugPrint("Could not delete thought: \(error.localizedDescription)")
+                                } else {
+                                    alert.dismiss(animated: true, completion: nil)
+                                }
+                            })
+                    }
+            })
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // 상위 도큐먼트 삭제시 하위 도큐먼트도 삭제 펑션(구글이 안줘서 직접 침)
+    func delete(collection: CollectionReference, batchSize: Int = 100, completion: @escaping (Error?) -> ()) {
+        collection.limit(to: batchSize).getDocuments { (docset, error) in
+            guard let docset = docset else {
+                completion(error)
+                return
+            }
+            guard docset.count > 0 else {
+                completion(nil)
+                return
+            }
+            let batch = collection.firestore.batch()
+            docset.documents.forEach({ (batch.deleteDocument($0.reference)) })
+            
+            batch.commit(completion: { (batchError) in
+                if let batchError = batchError {
+                    completion(batchError)
+                } else {
+                    self.delete(collection: collection, batchSize: batchSize, completion: completion)
+                }
+            })
         }
     }
     
